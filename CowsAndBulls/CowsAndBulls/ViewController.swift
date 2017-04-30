@@ -37,11 +37,6 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
             view.textField?.stringValue = result(for: guesses[row])
         }
         
-//        if tableColumn?.identifier == "Result" {
-//            // Result Column
-//            view.textField?.stringValue = result(for: guesses[row])
-//        }
-        
         return view
     }
     
@@ -62,7 +57,23 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
     }
     
     func result(for guess: String) -> String {
-        return "Result"
+        
+        var bulls = 0
+        var cows = 0
+        
+        let guessLetters = Array(guess.characters)
+        let answerLetters = Array(answer.characters)
+        
+        for (index, letter) in guessLetters.enumerated() {
+            if letter == answerLetters[index] {
+                bulls += 1
+            } else if answerLetters.contains(letter) {
+                cows += 1
+            }
+        }
+        
+        
+        return "\(bulls)b \(cows)c"
     }
     
     override var representedObject: Any? {
