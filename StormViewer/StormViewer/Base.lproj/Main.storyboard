@@ -702,13 +702,30 @@
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="messageClicked:" target="B8D-0N-5wS" id="R48-P7-Sk0"/>
+                                            <action selector="messageClicked:" target="Oky-zY-oP4" id="FPL-N1-cfq"/>
+                                        </connections>
+                                    </button>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="472A2674-12B0-459C-A937-F9932F8DEC6D" label="" paletteLabel="" id="oHn-F0-rlC">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="54" height="25"/>
+                                    <size key="maxSize" width="54" height="25"/>
+                                    <button key="view" verticalHuggingPriority="750" id="kD7-00-TCh">
+                                        <rect key="frame" x="0.0" y="14" width="54" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="roundTextured" title="About" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dCD-zL-2np">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="aboutClicked:" target="B8D-0N-5wS" id="qqm-oO-jGV"/>
                                         </connections>
                                     </button>
                                 </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
                                 <toolbarItem reference="jiy-83-WiM"/>
+                                <toolbarItem reference="oHn-F0-rlC"/>
                                 <toolbarItem reference="oQE-sl-t33"/>
                                 <toolbarItem reference="eUA-MU-LJn"/>
                             </defaultToolbarItems>

@@ -34,4 +34,12 @@ class WindowController: NSWindowController {
         
         alert.runModal()
     }
+    @IBAction func aboutClicked(_ sender: Any) {
+        
+        let options = [String: Any]()
+        
+        let app = NSApplication.shared()
+        app.orderFrontStandardAboutPanel(options: options)
+        
+    }
 }
