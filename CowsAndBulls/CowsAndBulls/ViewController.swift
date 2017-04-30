@@ -13,16 +13,22 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
     
     var answer = ""
     var guesses = [String]()
-
+    
     @IBOutlet var tableView: NSTableView!
     @IBOutlet var guess: NSTextField!
     
+    enum Skill {
+        case low(Int)
+        case medium(Int)
+        case high(Int)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         startNewGame()
     }
-
+    
     func numberOfRows(in tableView: NSTableView) -> Int {
         return guesses.count
     }
@@ -82,12 +88,42 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
         return "\(bulls)b \(cows)c"
     }
     
-    override var representedObject: Any? {
-        didSet {
-        // Update the view, if already loaded.
+    func calculateSkill(with guesses: Int) -> Skill {
+        
+        var skill = Skill.low(guesses)
+        
+        if (1...3).contains(guesses) {
+            skill = Skill.high(guesses)
+        } else if (4...6).contains(guesses) {
+            skill = Skill.medium(guesses)
+        }
+        
+        return skill
+    }
+    
+    func skillMessage(for skill: Skill) -> String {
+        switch skill {
+            
+        case .high(let guesses):
+            if guesses == 1 {
+                return "Congratulations! You crushed it with only \(guesses) guess!"
+            } else {
+                return "Congratulations! you crushed it with only \(guesses) guesses!"
+            }
+        case .medium(let guesses):
+            return "You did pretty well, \(guesses) guesses."
+            
+        case .low(let guesses):
+            return "You could do better, \(guesses) guesses."
         }
     }
-
+    
+    override var representedObject: Any? {
+        didSet {
+            // Update the view, if already loaded.
+        }
+    }
+    
     @IBAction func submitGuess(_ sender: Any) {
         
         // Check for 4 unique characters
@@ -98,7 +134,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
         let badCharacters = CharacterSet(charactersIn: "0123456789").inverted
         guard guessString.rangeOfCharacter(from: badCharacters) == nil else { return }
         
-        // Add the guess to array & table view
+        // Add the guess to array &s table view
         guesses.insert(guessString, at: 0)
         tableView.insertRows(at: IndexSet(integer: 0), withAnimation: .slideDown)
         
@@ -107,9 +143,13 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
         
         // Alert status if won
         if resultString.contains("4b") {
+            
+            let skill = calculateSkill(with: guesses.count)
+            let skillMessage = self.skillMessage(for: skill)
+            
             let alert = NSAlert()
             alert.messageText = "You Win!"
-            alert.informativeText = "Congratulations! Click OK to play again"
+            alert.informativeText = "\(skillMessage) Click OK to play again"
             
             alert.runModal()
             startNewGame()
