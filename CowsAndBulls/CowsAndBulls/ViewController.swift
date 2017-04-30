@@ -118,12 +118,6 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
         }
     }
     
-    override var representedObject: Any? {
-        didSet {
-            // Update the view, if already loaded.
-        }
-    }
-    
     @IBAction func submitGuess(_ sender: Any) {
         
         // Check for 4 unique characters
@@ -142,7 +136,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
         let resultString = result(for: guessString)
         
         // Alert status if won
-        if resultString.contains("4b") {
+        if resultString.contains("4b") { // Found 4 Bulls
             
             let skill = calculateSkill(with: guesses.count)
             let skillMessage = self.skillMessage(for: skill)
@@ -154,7 +148,6 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
             alert.runModal()
             startNewGame()
         }
-        
     }
 }
 
