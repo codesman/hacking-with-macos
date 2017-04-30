@@ -690,14 +690,32 @@
                                         </connections>
                                     </button>
                                 </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="5B927B94-EBCE-4883-9825-4E18962E4A42" label="" paletteLabel="" id="oQE-sl-t33">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="68" height="25"/>
+                                    <size key="maxSize" width="68" height="25"/>
+                                    <button key="view" verticalHuggingPriority="750" id="uJ4-Ij-cJ5">
+                                        <rect key="frame" x="0.0" y="14" width="68" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="roundTextured" title="Message" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7pF-bZ-ags">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="messageClicked:" target="B8D-0N-5wS" id="R48-P7-Sk0"/>
+                                        </connections>
+                                    </button>
+                                </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
                                 <toolbarItem reference="jiy-83-WiM"/>
+                                <toolbarItem reference="oQE-sl-t33"/>
                                 <toolbarItem reference="eUA-MU-LJn"/>
                             </defaultToolbarItems>
                         </toolbar>
                     </window>
                     <connections>
+                        <outlet property="messageButton" destination="uJ4-Ij-cJ5" id="94Z-ar-Vqn"/>
                         <outlet property="shareButton" destination="Avf-Z3-NoJ" id="nvI-g7-dwS"/>
                         <segue destination="SWt-oy-O4M" kind="relationship" relationship="window.shadowedContentViewController" id="b0M-28-Cw9"/>
                     </connections>
