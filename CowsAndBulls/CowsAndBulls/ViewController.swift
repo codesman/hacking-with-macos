@@ -9,6 +9,9 @@
 import Cocoa
 
 class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate {
+    
+    var answer = ""
+    var guesses = [String]()
 
     @IBOutlet var tableView: NSTableView!
     @IBOutlet var guess: NSTextField!
@@ -19,6 +22,32 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
         // Do any additional setup after loading the view.
     }
 
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        return guesses.count
+    }
+    
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        guard let view = tableView.make(withIdentifier: tableColumn!.identifier, owner: self) as? NSTableCellView else {
+            return nil
+        }
+        
+        if tableColumn?.identifier == "Guess" {
+            // Guess Column
+            view.textField?.stringValue = result(for: guesses[row])
+        }
+        
+//        if tableColumn?.identifier == "Result" {
+//            // Result Column
+//            view.textField?.stringValue = result(for: guesses[row])
+//        }
+        
+        return view
+    }
+    
+    func result(for guess: String) -> String {
+        return "Result"
+    }
+    
     override var representedObject: Any? {
         didSet {
         // Update the view, if already loaded.
@@ -27,6 +56,10 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
 
 
     @IBAction func submitGuess(_ sender: Any) {
+    }
+    
+    func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
+        return false
     }
 }
 
