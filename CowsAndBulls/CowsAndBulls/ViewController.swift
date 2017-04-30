@@ -32,12 +32,19 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
             return nil
         }
         
-        if tableColumn?.identifier == "Guess" {
+        if tableColumn?.title == "Guess" {
             // Guess Column
+            view.textField?.stringValue = guesses[row]
+        } else {
+            // Result Columns
             view.textField?.stringValue = result(for: guesses[row])
         }
         
         return view
+    }
+    
+    func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
+        return false
     }
     
     func startNewGame(){
@@ -72,7 +79,6 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
             }
         }
         
-        
         return "\(bulls)b \(cows)c"
     }
     
@@ -82,12 +88,33 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
         }
     }
 
-
     @IBAction func submitGuess(_ sender: Any) {
-    }
-    
-    func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
-        return false
+        
+        // Check for 4 unique characters
+        let guessString = guess.stringValue
+        guard Set(guessString.characters).count == 4 else { return }
+        
+        // Ensure there are no non-digit characters
+        let badCharacters = CharacterSet(charactersIn: "0123456789").inverted
+        guard guessString.rangeOfCharacter(from: badCharacters) == nil else { return }
+        
+        // Add the guess to array & table view
+        guesses.insert(guessString, at: 0)
+        tableView.insertRows(at: IndexSet(integer: 0), withAnimation: .slideDown)
+        
+        // Determine win/lose
+        let resultString = result(for: guessString)
+        
+        // Alert status if won
+        if resultString.contains("4b") {
+            let alert = NSAlert()
+            alert.messageText = "You Win!"
+            alert.informativeText = "Congratulations! Click OK to play again"
+            
+            alert.runModal()
+            startNewGame()
+        }
+        
     }
 }
 
