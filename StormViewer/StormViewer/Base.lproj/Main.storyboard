@@ -679,10 +679,10 @@
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--Split View Controller-->
+        <!--View Controller-->
         <scene sceneID="gUK-V4-8WQ">
             <objects>
-                <splitViewController id="SWt-oy-O4M" sceneMemberID="viewController">
+                <splitViewController id="SWt-oy-O4M" customClass="ViewController" customModule="StormViewer" customModuleProvider="target" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem holdingPriority="260" id="iaY-VL-BiD"/>
                         <splitViewItem id="lUX-pS-vVE"/>
