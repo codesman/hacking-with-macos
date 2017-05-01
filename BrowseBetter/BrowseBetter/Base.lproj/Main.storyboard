@@ -673,99 +673,94 @@
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="ZJe-Bc-wC9"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="ljH-Wh-71F"/>
-                                <toolbarItem implicitItemIdentifier="829A4057-F210-4C01-B2C1-9744117130A0" label="Custom View" paletteLabel="Custom View" id="jhz-xi-vb5">
+                                <toolbarItem implicitItemIdentifier="829A4057-F210-4C01-B2C1-9744117130A0" label="" paletteLabel="" id="jhz-xi-vb5">
                                     <nil key="toolTip"/>
-                                    <size key="minSize" width="100" height="28"/>
+                                    <size key="minSize" width="67" height="27"/>
                                     <size key="maxSize" width="100" height="28"/>
                                     <segmentedControl key="view" verticalHuggingPriority="750" id="6ZF-JE-oKB">
-                                        <rect key="frame" x="0.0" y="14" width="100" height="28"/>
+                                        <rect key="frame" x="0.0" y="14" width="75" height="27"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="L8z-Bc-wFH">
+                                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="momentary" id="L8z-Bc-wFH">
                                             <font key="font" metaFont="system"/>
                                             <segments>
-                                                <segment width="32"/>
-                                                <segment width="32" selected="YES" tag="1"/>
-                                                <segment width="32">
-                                                    <nil key="label"/>
-                                                </segment>
+                                                <segment image="NSGoLeftTemplate" width="32"/>
+                                                <segment image="NSGoRightTemplate" width="32" tag="1"/>
                                             </segments>
                                         </segmentedCell>
                                     </segmentedControl>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="1CDA5F0E-1E6A-4971-A785-5EA1F2377322" label="Custom View" paletteLabel="Custom View" id="XNG-qa-5Wk">
+                                <toolbarItem implicitItemIdentifier="1CDA5F0E-1E6A-4971-A785-5EA1F2377322" label="" paletteLabel="" id="XNG-qa-5Wk">
                                     <nil key="toolTip"/>
-                                    <size key="minSize" width="100" height="28"/>
-                                    <size key="maxSize" width="100" height="28"/>
+                                    <size key="minSize" width="67" height="27"/>
+                                    <size key="maxSize" width="113" height="28"/>
                                     <segmentedControl key="view" verticalHuggingPriority="750" id="1wC-fJ-ska">
-                                        <rect key="frame" x="0.0" y="14" width="100" height="28"/>
+                                        <rect key="frame" x="0.0" y="14" width="75" height="27"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="RZl-oX-Smi">
+                                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="momentary" id="RZl-oX-Smi">
                                             <font key="font" metaFont="system"/>
                                             <segments>
-                                                <segment width="32"/>
-                                                <segment width="32" selected="YES" tag="1"/>
-                                                <segment width="32">
+                                                <segment image="NSAddTemplate" width="32">
+                                                    <nil key="label"/>
+                                                </segment>
+                                                <segment image="NSRemoveTemplate" width="32" tag="1">
                                                     <nil key="label"/>
                                                 </segment>
                                             </segments>
                                         </segmentedCell>
                                     </segmentedControl>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="6677CFB9-9C57-4756-A798-C55EE075435E" label="Custom View" paletteLabel="Custom View" id="RbH-HI-Tpl">
+                                <toolbarItem implicitItemIdentifier="6677CFB9-9C57-4756-A798-C55EE075435E" label="" paletteLabel="" id="RbH-HI-Tpl">
                                     <nil key="toolTip"/>
-                                    <size key="minSize" width="100" height="28"/>
+                                    <size key="minSize" width="67" height="27"/>
                                     <size key="maxSize" width="100" height="28"/>
                                     <segmentedControl key="view" verticalHuggingPriority="750" id="ogW-fZ-cTr">
-                                        <rect key="frame" x="0.0" y="14" width="100" height="28"/>
+                                        <rect key="frame" x="0.0" y="14" width="75" height="27"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="aRf-HB-d16">
+                                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="momentary" id="aRf-HB-d16">
                                             <font key="font" metaFont="system"/>
                                             <segments>
-                                                <segment width="32"/>
-                                                <segment width="32" selected="YES" tag="1"/>
-                                                <segment width="32">
-                                                    <nil key="label"/>
-                                                </segment>
+                                                <segment image="NSAddTemplate" width="32"/>
+                                                <segment image="NSRemoveTemplate" width="32" tag="1"/>
                                             </segments>
                                         </segmentedCell>
                                     </segmentedControl>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="92E2B470-CCF4-4BAF-8E09-395B128259A7" label="Custom View" paletteLabel="Custom View" id="8xW-77-fCF">
+                                <toolbarItem implicitItemIdentifier="92E2B470-CCF4-4BAF-8E09-395B128259A7" label="" paletteLabel="" id="8xW-77-fCF">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="96" height="22"/>
-                                    <size key="maxSize" width="96" height="22"/>
+                                    <size key="maxSize" width="4000" height="22"/>
                                     <textField key="view" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="Yux-RN-9xh">
                                         <rect key="frame" x="0.0" y="14" width="96" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="8GS-YS-jzz">
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Enter URL..." drawsBackground="YES" id="8GS-YS-jzz">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="4802FB47-32DF-40E4-ADCD-9743EAD36537" label="Custom View" paletteLabel="Custom View" id="Wyj-kM-ya7">
+                                <toolbarItem implicitItemIdentifier="4802FB47-32DF-40E4-ADCD-9743EAD36537" label="" paletteLabel="" id="Wyj-kM-ya7">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="38" height="17"/>
                                     <size key="maxSize" width="38" height="17"/>
                                     <textField key="view" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="o6C-09-8qr">
-                                        <rect key="frame" x="19" y="14" width="38" height="17"/>
+                                        <rect key="frame" x="0.0" y="14" width="38" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="rNF-5q-Qyl">
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Rows" id="rNF-5q-Qyl">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="29476BFE-5208-4485-A411-9C4657E1B3DC" label="Custom View" paletteLabel="Custom View" id="b9n-l8-6uz">
+                                <toolbarItem implicitItemIdentifier="29476BFE-5208-4485-A411-9C4657E1B3DC" label="" paletteLabel="" id="b9n-l8-6uz">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="38" height="17"/>
                                     <size key="maxSize" width="38" height="17"/>
                                     <textField key="view" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="LeL-fD-s6s">
-                                        <rect key="frame" x="19" y="14" width="38" height="17"/>
+                                        <rect key="frame" x="0.0" y="14" width="38" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="4tM-4g-1P0">
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Cols" id="4tM-4g-1P0">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -774,7 +769,15 @@
                                 </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
-                                <toolbarItem reference="ljH-Wh-71F"/>
+                                <toolbarItem reference="jhz-xi-vb5"/>
+                                <toolbarItem reference="ZJe-Bc-wC9"/>
+                                <toolbarItem reference="8xW-77-fCF"/>
+                                <toolbarItem reference="ZJe-Bc-wC9"/>
+                                <toolbarItem reference="Wyj-kM-ya7"/>
+                                <toolbarItem reference="XNG-qa-5Wk"/>
+                                <toolbarItem reference="ZJe-Bc-wC9"/>
+                                <toolbarItem reference="b9n-l8-6uz"/>
+                                <toolbarItem reference="RbH-HI-Tpl"/>
                             </defaultToolbarItems>
                         </toolbar>
                     </window>
@@ -800,4 +803,10 @@
             <point key="canvasLocation" x="75" y="655"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="NSAddTemplate" width="11" height="11"/>
+        <image name="NSGoLeftTemplate" width="9" height="12"/>
+        <image name="NSGoRightTemplate" width="9" height="12"/>
+        <image name="NSRemoveTemplate" width="11" height="11"/>
+    </resources>
 </document>
