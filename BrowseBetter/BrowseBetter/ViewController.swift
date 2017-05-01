@@ -167,3 +167,11 @@ class ViewController: NSViewController, WKNavigationDelegate, NSGestureRecognize
     }
 }
 
+extension NSTouchBarItemIdentifier {
+    static let navigation = NSTouchBarItemIdentifier("com.atomicappworks.browsebetter.navigation")
+    static let enterAddress = NSTouchBarItemIdentifier("com.atomicappworks.browsebetter.enterAddress")
+    static let sharingPicker = NSTouchBarItemIdentifier("com.atomicappworks.browsebetter.sharingPicker")
+    static let adjustGrid = NSTouchBarItemIdentifier("com.atomicappworks.browsebetter.adjustGrid")
+    static let adjustRows = NSTouchBarItemIdentifier("com.atomicappworks.browsebetter.adjustRows")
+    static let adjustCols = NSTouchBarItemIdentifier("com.atomicappworks.browsebetter.adjustCols")
+}
