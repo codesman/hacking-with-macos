@@ -9,7 +9,7 @@
 import Cocoa
 import WebKit
 
-class ViewController: NSViewController, WKNavigationDelegate {
+class ViewController: NSViewController, WKNavigationDelegate, NSGestureRecognizerDelegate {
     
     var rows: NSStackView!
     var selectedWebView: WKWebView!
@@ -100,14 +100,24 @@ class ViewController: NSViewController, WKNavigationDelegate {
         }
     }
     
+    func gestureRecognizer(_ gestureRecognizer: NSGestureRecognizer, shouldAttemptToRecognizeWith event: NSEvent) -> Bool {
+        guard gestureRecognizer.view == selectedWebView else { return true }
+        
+        return false
+    }
+    
     func makeWebView() -> NSView {
         let webView  = WKWebView()
         webView.navigationDelegate = self
         webView.wantsLayer = true
         webView.load(URLRequest(url: URL(string: "https://www.apple.com")!))
+        // 2 ways to disambiguate Gestures
+//        let recognizer = NSClickGestureRecognizer(target: self, action: #selector(webViewClicked))
+//        recognizer.numberOfClicksRequired = 2
+//        webView.addGestureRecognizer(recognizer)
         
         let recognizer = NSClickGestureRecognizer(target: self, action: #selector(webViewClicked))
-        recognizer.numberOfClicksRequired = 2
+        recognizer.delegate = self
         webView.addGestureRecognizer(recognizer)
         
         return webView
