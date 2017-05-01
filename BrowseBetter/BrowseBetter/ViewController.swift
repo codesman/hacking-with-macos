@@ -111,7 +111,12 @@ class ViewController: NSViewController, WKNavigationDelegate, NSGestureRecognize
         webView.navigationDelegate = self
         webView.wantsLayer = true
         webView.load(URLRequest(url: URL(string: "https://www.apple.com")!))
-        // 2 ways to disambiguate Gestures
+        
+        if selectedWebView == nil {
+            select(webView: webView)
+        }
+        
+//        2 ways to disambiguate clicks - number of clicks required or NSClickGestureRecognizerDelegate
 //        let recognizer = NSClickGestureRecognizer(target: self, action: #selector(webViewClicked))
 //        recognizer.numberOfClicksRequired = 2
 //        webView.addGestureRecognizer(recognizer)
