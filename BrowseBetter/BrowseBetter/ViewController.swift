@@ -7,21 +7,43 @@
 //
 
 import Cocoa
+import WebKit
 
-class ViewController: NSViewController {
+class ViewController: NSViewController, WKNavigationDelegate {
+    
+    var rows: NSStackView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Add StackView
+        rows = NSStackView()
+        rows.orientation = .vertical
+        rows.distribution = .fillEqually
+        rows.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(rows)
+        
+        // Define Autolayout Constraints
+        rows.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        rows.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        rows.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        rows.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        
+        // Initial Column View
+        let column = NSStackView(views: [makeWebView()])
+        column.distribution = .fillEqually
+        
+        // Add Column to rows Stack View
+        rows.addArrangedSubview(column)
     }
-
+    
     override var representedObject: Any? {
         didSet {
         // Update the view, if already loaded.
         }
     }
 
+    
     @IBAction func urlEntered(_ sender: NSTextField) {
         
     }
@@ -36,6 +58,16 @@ class ViewController: NSViewController {
     
     @IBAction func adjustColumns(_ sender: NSSegmentedControl) {
         
+    }
+    
+    func makeWebView() -> NSView {
+        let webView  = WKWebView()
+        webView.navigationDelegate = self
+        webView.wantsLayer = true
+        
+        webView.load(URLRequest(url: URL(string: "https://www.apple.com")!))
+        
+        return webView
     }
 }
 
