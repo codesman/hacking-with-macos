@@ -176,6 +176,7 @@ class ViewController: NSViewController, WKNavigationDelegate, NSGestureRecognize
             customTouchBarItem.view = button
             
             return customTouchBarItem
+            
         case NSTouchBarItemIdentifier.navigation:
             let back = NSImage(named: NSImageNameTouchBarGoBackTemplate)!
             let forward = NSImage(named: NSImageNameTouchBarGoForwardTemplate)!
@@ -186,9 +187,29 @@ class ViewController: NSViewController, WKNavigationDelegate, NSGestureRecognize
             customTouchBarItem.view = segmentedControl
             
             return customTouchBarItem
+            
         case NSTouchBarItemIdentifier.sharingPicker:
             let picker = NSSharingServicePickerTouchBarItem(identifier: identifier)
             picker.delegate = self
+            
+            return picker
+            
+        case NSTouchBarItemIdentifier.adjustRows:
+            let control = NSSegmentedControl(labels: ["Add Row", "Remove Row"], trackingMode: .momentaryAccelerator, target: self, action: #selector(adjustRows))
+            let customTouchBarItem = NSCustomTouchBarItem(identifier: identifier)
+            customTouchBarItem.customizationLabel = "Rows"
+            customTouchBarItem.view = control
+            
+            return customTouchBarItem
+            
+        case NSTouchBarItemIdentifier.adjustCols:
+            let control = NSSegmentedControl(labels: ["Add Column", "Remove Column"], trackingMode: .momentaryAccelerator, target: self, action: #selector(adjustColumns))
+            let customTouchBarItem = NSCustomTouchBarItem(identifier: identifier)
+            customTouchBarItem.customizationLabel = "Columns"
+            customTouchBarItem.view = control
+            
+            return customTouchBarItem
+
             
         default:
             return nil
