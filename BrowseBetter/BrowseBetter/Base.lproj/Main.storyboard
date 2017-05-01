@@ -793,6 +793,9 @@
                                 <toolbarItem reference="RbH-HI-Tpl"/>
                             </defaultToolbarItems>
                         </toolbar>
+                        <connections>
+                            <outlet property="delegate" destination="B8D-0N-5wS" id="A9W-52-0uN"/>
+                        </connections>
                     </window>
                     <connections>
                         <outlet property="addressEntry" destination="Yux-RN-9xh" id="q76-PY-8wh"/>
