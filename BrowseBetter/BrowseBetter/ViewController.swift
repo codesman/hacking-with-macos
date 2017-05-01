@@ -169,6 +169,12 @@ class ViewController: NSViewController, WKNavigationDelegate, NSGestureRecognize
     @available(OSX 10.12.2, *)
     func touchBar(_ touchBar: NSTouchBar, makeItemForIdentifier identifier: NSTouchBarItemIdentifier) -> NSTouchBarItem? {
         switch identifier {
+        case NSTouchBarItemIdentifier.enterAddress:
+            let button = NSButton(title: "Enter a URL", target: self, action: #selector(selectedAddressEntry))
+            let customTouchBarItem = NSCustomTouchBarItem(identifier: identifier)
+            customTouchBarItem.view = button
+            
+            return customTouchBarItem
             
         default:
             return nil
@@ -197,6 +203,13 @@ class ViewController: NSViewController, WKNavigationDelegate, NSGestureRecognize
         touchBar.customizationRequiredItemIdentifiers = [.enterAddress]
         
         return touchBar
+
+    }
+    
+    func selectedAddressEntry() {
+        if let windowController = view.window?.windowController as? WindowController {
+            windowController.window?.makeFirstResponder(windowController.addressEntry)
+        }
     }
 }
 
