@@ -43,7 +43,6 @@ class ViewController: NSViewController, WKNavigationDelegate {
         }
     }
 
-    
     @IBAction func urlEntered(_ sender: NSTextField) {
         
     }
