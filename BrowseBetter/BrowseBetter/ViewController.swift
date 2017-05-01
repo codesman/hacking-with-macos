@@ -45,7 +45,11 @@ class ViewController: NSViewController, WKNavigationDelegate, NSGestureRecognize
     }
     
     @IBAction func urlEntered(_ sender: NSTextField) {
+        guard let selected = selectedWebView else { return }
         
+        if let url = URL(string: sender.stringValue) {
+            selected.load(URLRequest(url: url))
+        }
     }
     
     @IBAction func navigationClicked(_ sender: NSSegmentedControl) {
