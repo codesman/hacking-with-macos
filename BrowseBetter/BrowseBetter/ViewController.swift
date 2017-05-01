@@ -9,7 +9,7 @@
 import Cocoa
 import WebKit
 
-class ViewController: NSViewController, WKNavigationDelegate, NSGestureRecognizerDelegate {
+class ViewController: NSViewController, WKNavigationDelegate, NSGestureRecognizerDelegate, NSTouchBarDelegate {
     
     var rows: NSStackView!
     var selectedWebView: WKWebView!
@@ -164,6 +164,39 @@ class ViewController: NSViewController, WKNavigationDelegate, NSGestureRecognize
         if let WindowController = view.window?.windowController as? WindowController {
             WindowController.addressEntry.stringValue = selectedWebView.url?.absoluteString ?? ""
         }
+    }
+    
+    @available(OSX 10.12.2, *)
+    func touchBar(_ touchBar: NSTouchBar, makeItemForIdentifier identifier: NSTouchBarItemIdentifier) -> NSTouchBarItem? {
+        switch identifier {
+            
+        default:
+            return nil
+        }
+    }
+    
+    @available(OSX 10.12.2, *)
+    override func makeTouchBar() -> NSTouchBar? {
+        // Enable Touch Bar Customization
+        NSApp.isAutomaticCustomizeTouchBarMenuItemEnabled = true
+        
+        let touchBar = NSTouchBar()
+        touchBar.customizationIdentifier = NSTouchBarCustomizationIdentifier("com.atomicappworks.browsebetter")
+        touchBar.delegate = self
+        
+        // Set up defaults
+        touchBar.defaultItemIdentifiers = [.navigation, .adjustGrid, .enterAddress, .sharingPicker]
+        
+        // Set address entry button to center
+        touchBar.principalItemIdentifier = .enterAddress
+        
+        // Define customizable controls
+        touchBar.customizationAllowedItemIdentifiers = [.sharingPicker, .adjustGrid, .adjustCols, .adjustRows]
+        
+        // Can not customize this item(s)
+        touchBar.customizationRequiredItemIdentifiers = [.enterAddress]
+        
+        return touchBar
     }
 }
 
