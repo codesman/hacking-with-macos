@@ -12,10 +12,10 @@ import WebKit
 class ViewController: NSViewController, WKNavigationDelegate {
     
     var rows: NSStackView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Add StackView
         rows = NSStackView()
         rows.orientation = .vertical
@@ -39,24 +39,64 @@ class ViewController: NSViewController, WKNavigationDelegate {
     
     override var representedObject: Any? {
         didSet {
-        // Update the view, if already loaded.
+            // Update the view, if already loaded.
         }
     }
-
+    
     @IBAction func urlEntered(_ sender: NSTextField) {
         
     }
-
+    
     @IBAction func navigationClicked(_ sender: NSSegmentedControl) {
         
     }
     
     @IBAction func adjustRows(_ sender: NSSegmentedControl) {
         
+        if sender.selectedSegment == 0 {
+            // Need to add a row
+            let columnCount = (rows.arrangedSubviews[0] as! NSStackView).arrangedSubviews.count
+            let viewArray = (0 ..< columnCount).map { _ in makeWebView() }
+            let row = NSStackView(views: viewArray)
+            
+            row.distribution = .fillEqually
+            rows.addArrangedSubview(row)
+        } else {
+            // Need to delete a row
+            guard rows.arrangedSubviews.count > 1 else { return }
+            guard let rowToRemove = rows.arrangedSubviews.last as? NSStackView else { return }
+            
+            for cell in rowToRemove.arrangedSubviews {
+                cell.removeFromSuperview()
+            }
+            
+            rows.removeArrangedSubview(rowToRemove)
+        }
     }
     
     @IBAction func adjustColumns(_ sender: NSSegmentedControl) {
         
+        if sender.selectedSegment == 0 {
+            // Add a column
+            for case let row as NSStackView in rows.arrangedSubviews {
+                row.addArrangedSubview(makeWebView())
+            }
+        } else {
+            // Need to delete a column
+            // Get the first row
+            guard let firstRow = rows.arrangedSubviews.first as? NSStackView else { return }
+            
+            // Make sure the row has at least 2 columns
+            guard firstRow.arrangedSubviews.count > 1 else { return }
+            
+            // We've got a column that can be deleted
+            for case let row as NSStackView in rows.arrangedSubviews {
+                if let last = row.arrangedSubviews.last {
+                    row.removeArrangedSubview(last)
+                    last.removeFromSuperview()
+                }
+            }
+        }
     }
     
     func makeWebView() -> NSView {
