@@ -142,6 +142,10 @@ class ViewController: NSViewController, WKNavigationDelegate, NSGestureRecognize
         selectedWebView = webView
         selectedWebView.layer?.borderWidth = 4
         selectedWebView.layer?.borderColor = NSColor.blue.cgColor
+        
+        if let WindowController = view.window?.windowController as? WindowController {
+            WindowController.addressEntry.stringValue = selectedWebView.url?.absoluteString ?? ""
+        }
     }
     
     func webViewClicked(recognizer: NSClickGestureRecognizer) {
