@@ -210,6 +210,14 @@ class ViewController: NSViewController, WKNavigationDelegate, NSGestureRecognize
             
             return customTouchBarItem
 
+        case NSTouchBarItemIdentifier.adjustGrid:
+            let popOver = NSPopoverTouchBarItem(identifier: identifier)
+            popOver.collapsedRepresentationLabel = "Grid"
+            popOver.customizationLabel = "Adjust Grid"
+            popOver.popoverTouchBar.delegate = self
+            popOver.popoverTouchBar.defaultItemIdentifiers = [.adjustRows, .adjustCols]
+            
+            return popOver
             
         default:
             return nil
