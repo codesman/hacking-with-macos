@@ -172,6 +172,7 @@ class ViewController: NSViewController, WKNavigationDelegate, NSGestureRecognize
         case NSTouchBarItemIdentifier.enterAddress:
             let button = NSButton(title: "Enter a URL", target: self, action: #selector(selectedAddressEntry))
             let customTouchBarItem = NSCustomTouchBarItem(identifier: identifier)
+            button.setContentHuggingPriority(10, for: .horizontal)
             customTouchBarItem.view = button
             
             return customTouchBarItem
