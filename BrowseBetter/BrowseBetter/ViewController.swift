@@ -157,5 +157,13 @@ class ViewController: NSViewController, WKNavigationDelegate, NSGestureRecognize
         
         select(webView: newSelectedWebView)
     }
+    
+    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+        guard webView == selectedWebView else { return }
+        
+        if let WindowController = view.window?.windowController as? WindowController {
+            WindowController.addressEntry.stringValue = selectedWebView.url?.absoluteString ?? ""
+        }
+    }
 }
 
