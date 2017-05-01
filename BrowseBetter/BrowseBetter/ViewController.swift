@@ -9,7 +9,7 @@
 import Cocoa
 import WebKit
 
-class ViewController: NSViewController, WKNavigationDelegate, NSGestureRecognizerDelegate, NSTouchBarDelegate {
+class ViewController: NSViewController, WKNavigationDelegate, NSGestureRecognizerDelegate, NSTouchBarDelegate, NSSharingServicePickerTouchBarItemDelegate {
     
     var rows: NSStackView!
     var selectedWebView: WKWebView!
@@ -176,6 +176,19 @@ class ViewController: NSViewController, WKNavigationDelegate, NSGestureRecognize
             customTouchBarItem.view = button
             
             return customTouchBarItem
+        case NSTouchBarItemIdentifier.navigation:
+            let back = NSImage(named: NSImageNameTouchBarGoBackTemplate)!
+            let forward = NSImage(named: NSImageNameTouchBarGoForwardTemplate)!
+            
+            let segmentedControl = NSSegmentedControl(images: [back, forward], trackingMode: .momentary, target: self, action: #selector(navigationClicked))
+            
+            let customTouchBarItem = NSCustomTouchBarItem(identifier: identifier)
+            customTouchBarItem.view = segmentedControl
+            
+            return customTouchBarItem
+        case NSTouchBarItemIdentifier.sharingPicker:
+            let picker = NSSharingServicePickerTouchBarItem(identifier: identifier)
+            picker.delegate = self
             
         default:
             return nil
@@ -211,6 +224,14 @@ class ViewController: NSViewController, WKNavigationDelegate, NSGestureRecognize
         if let windowController = view.window?.windowController as? WindowController {
             windowController.window?.makeFirstResponder(windowController.addressEntry)
         }
+    }
+    
+    @available(OSX 10.12.2, *)
+    func items(for pickerTouchBarItem: NSSharingServicePickerTouchBarItem) -> [Any] {
+        guard let webView = selectedWebView else { return [] }
+        guard let url = webView.url?.absoluteString else { return [] }
+        
+        return [url]
     }
 }
 
