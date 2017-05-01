@@ -12,6 +12,7 @@ import WebKit
 class ViewController: NSViewController, WKNavigationDelegate {
     
     var rows: NSStackView!
+    var selectedWebView: WKWebView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,10 +104,29 @@ class ViewController: NSViewController, WKNavigationDelegate {
         let webView  = WKWebView()
         webView.navigationDelegate = self
         webView.wantsLayer = true
-        
         webView.load(URLRequest(url: URL(string: "https://www.apple.com")!))
         
+        let recognizer = NSClickGestureRecognizer(target: self, action: #selector(webViewClicked))
+        recognizer.numberOfClicksRequired = 2
+        webView.addGestureRecognizer(recognizer)
+        
         return webView
+    }
+    
+    func select(webView: WKWebView) {
+        selectedWebView = webView
+        selectedWebView.layer?.borderWidth = 4
+        selectedWebView.layer?.borderColor = NSColor.blue.cgColor
+    }
+    
+    func webViewClicked(recognizer: NSClickGestureRecognizer) {
+        guard let newSelectedWebView = recognizer.view as? WKWebView else { return }
+        
+        if let selected = selectedWebView {
+            selected.layer?.borderWidth = 0
+        }
+        
+        select(webView: newSelectedWebView)
     }
 }
 
